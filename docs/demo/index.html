@@ -1,0 +1,317 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Blockly-gamepad demo</title>
+
+    <link rel="icon" href="../docs/icons/favicon/icon.svg">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!--Blockly-->
+    <script src="../libs/blockly/blockly_compressed.js"></script>
+    <script src="../libs/blockly/blocks_compressed.js"></script>
+    <script src="../libs/blockly/javascript_compressed.js"></script>
+    <script src="../libs/blockly/en.js"></script>
+
+    <!--blockly-gamepad-->
+    <script src="../libs/gamepad/gamepad.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <!--title-->
+        <span class="title">
+            <div>
+                <a href="https://developers.google.com/blockly/">Blockly</a> 
+                <a style="font-size: 80%;">&</a> 
+                <a href="https://github.com/Paol-imi/blockly-gamepad">blockly-gamepad</a>: Maze
+            </div>
+        </span>
+        <vr></vr>
+        <!--start switch-->
+        <span class="switch_span">start</span>
+        <label class="switch">
+            <input id="start_check" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <vr></vr>
+        <!--categories switch-->
+        <span class="switch_span">categories</span>
+        <label class="switch">
+            <input id="categories_check" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <vr></vr>
+        <!--level buttons-->
+        <span class="switch_span">levels</span>
+        <button class="button level" id="level_1">1</button>
+        <button button class="button level" id="level_2">2</button>
+        <button button class="button level" id="level_3">3</button>
+        <button button class="button level" id="level_4">4</button>
+        <button button class="button level" id="level_5">5</button>
+        <button button class="button level" id="level_6">6</button>
+        <button button class="button level" id="level_7">7</button>
+        <button button class="button level" id="level_8">8</button>
+        <button button class="button level" id="level_9">9</button>
+        <button button class="button level" id="level_10">10</button>
+
+        <vr></vr>
+    </header>
+
+    <main>
+        <!--game div-->
+        <div id="game-div">
+            <!--game 1-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="1" width="400px" height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/ex1.png" class="maze" x="0" y="-1" width="400" height="399"></image>
+                <image id="finish1" xlink:href="images/marker.png" height="34" width="20" x="239" y="160"></image>
+                <clipPath id="pegmanClipPath1">
+                    <rect id="clipRect1" width="49" height="52" x="120" y="160"></rect>
+                </clipPath>
+                <image id="pegman1" xlink:href="images/pegman.png" height="52" width="1029"
+                    clip-path="url(#pegmanClipPath1)" x="-75" y="160" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            <!--game 2-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="2" width="400px" height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/ex2.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish2" xlink:href="images/marker.png" height="34" width="20" x="272" y="210"></image>
+                <clipPath id="2pegmanClipPath">
+                    <rect id="clipRect2" width="49" height="52" x="110" y="135"></rect>
+                </clipPath>
+                <image id="pegman2" xlink:href="images/pegman.png" height="52" width="1029"
+                    clip-path="url(#2pegmanClipPath)" x="-90" y="135" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            <!--game 3-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="3" width="400px" height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/ex7.png" class="maze" x="-30" y="-50" width="460" height="500"></image>
+                <image id="finish3" xlink:href="images/marker.png" height="34" width="20" x="320" y="150"></image>
+                <clipPath id="pegmanClipPath3">
+                    <rect id="clipRect3" width="49" height="52" x="31" y="145"></rect>
+                </clipPath>
+                <image id="pegman3" xlink:href="images/pegman.png" height="52" width="1029"
+                    clip-path="url(#pegmanClipPath3)" x="-165" y="145" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            <!--game 4-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="4" width="400px" height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/ex8.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish4" xlink:href="images/marker.png" height="34" width="20" x="233" y="60"></image>
+                <clipPath id="pegmanClipPath4">
+                    <rect id="clipRect4" width="49" height="52" x="120" y="250"></rect>
+                </clipPath>
+                <image id="pegman4" xlink:href="images/pegman.png" height="52" width="1029"
+                    clip-path="url(#pegmanClipPath4)" x="-80" y="250" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            <!--game 5-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="5" width="400px" height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/ex5.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish5" xlink:href="images/marker.png" height="34" width="20" x="266" y="60"></image>
+                <clipPath id="pegmanClipPath5">
+                    <rect id="clipRect5" width="49" height="52" x="51" y="291"></rect>
+                </clipPath>
+                <image id="pegman5" xlink:href="images/pegman.png" height="52" width="1029"
+                    clip-path="url(#pegmanClipPath5)" x="-145" y="291" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            <!--game 6-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="6" width="400px" height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/ex6.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish6" xlink:href="images/marker.png" height="34" width="20" x="298" y="65"></image>
+                <clipPath id="pegmanClipPath6">
+                    <rect id="clipRect6" width="49" height="52" x="51" y="291"></rect>
+                </clipPath>
+                <image id="pegman6" xlink:href="images/pegman.png" height="52" width="1029"
+                    clip-path="url(#pegmanClipPath6)" x="-145" y="291" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            <!--game 7-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="7" width="400px" height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/ex3.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish7" xlink:href="images/marker.png" height="34" width="20" x="342" y="255"></image>
+                <clipPath id="pegmanClipPath7">
+                    <rect id="clipRect7" width="49" height="52" x="51" y="291"></rect>
+                </clipPath>
+                <image id="pegman7" xlink:href="images/pegman.png" height="52" width="1029"
+                    clip-path="url(#pegmanClipPath7)" x="-145" y="291" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            <!--game 8-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="8" width="400px" height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/ex4.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish8" xlink:href="images/marker.png" height="34" width="20" x="175" y="210"></image>
+                <clipPath id="pegmanClipPath8">
+                    <rect id="clipRect8" width="49" height="52" x="51" y="291"></rect>
+                </clipPath>
+                <image id="pegman8" xlink:href="images/pegman.png" height="52" width="1029"
+                    clip-path="url(#pegmanClipPath8)" x="-145" y="291" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            <!--game 9-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="9" width="400px" height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/ex9.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish9" xlink:href="images/marker.png" height="34" width="20" x="233" y="80"></image>
+                <clipPath id="pegmanClipPath9">
+                    <rect id="clipRect9" width="49" height="52" x="51" y="291"></rect>
+                </clipPath>
+                <image id="pegman9" xlink:href="images/pegman.png" height="52" width="1029"
+                    clip-path="url(#pegmanClipPath9)" x="-145" y="291" transform="rotate(0, 0, 0)"></image>
+            </svg>
+            <!--game 10-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none" version="1.1" id="10" width="400px" height="400px" viewBox="0 0 400 400">
+                <image xlink:href="images/ex10.png" class="maze" x="0" y="0" width="400" height="400"></image>
+                <image id="finish10" xlink:href="images/marker.png" height="34" width="20" x="135" y="160"></image>
+                <clipPath id="pegmanClipPath10">
+                    <rect id="clipRect10" width="49" height="52" x="51" y="291"></rect>
+                </clipPath>
+                <image id="pegman10" xlink:href="images/pegman.png" height="52" width="1029"
+                    clip-path="url(#pegmanClipPath10)" x="-145" y="291" transform="rotate(0, 0, 0)"></image>
+            </svg> >
+
+            <!--capacity div-->
+            <div id="capacity" style="display: none;">You have <span id="capacityNumber">10</span> blocks left.</div>
+            <!--buttons-->
+            <div class="buttons">
+                <button id="play" class="button green" style="grid-area: 1">Play</button>
+                <button id="pause" class="button green" style="grid-area: 2">Pause</button>
+                <hr>
+                <button id="forward" class="button blue" style="grid-area: 2">Forward</button>
+                <button id="backward" class="button blue" style="grid-area: 3">Backward</button>
+                <hr>
+                <button id="load" class="button violet" style="grid-area: 1"> &nbsp;Load&ensp;code</button>
+            </div>
+        </div>
+        <!--workspace div-->
+        <div id="blockly-editor">
+            <div id="blockly-div"></div>
+            <!--toolbox without categories-->
+            <xml id="toolbox" style="display: none">
+                <block type="move"></block>
+                <block type="turn"></block>
+                <block type="turn">
+                    <field name="DIRECTION">3</field>
+                </block>
+                <block type="repeat_until"></block>
+                <block type="if_path"></block>
+                <block type="if_else_path"></block>
+            </xml>
+            <!--toolbox whit categories-->
+            <xml id="toolbox_c" style="display: none">
+                <category name="Controls" colour="285">
+                    <block type="move"></block>
+                    <block type="turn"></block>
+                    <block type="turn">
+                        <field name="DIRECTION">3</field>
+                    </block>
+                </category>
+                <category name="Logic" colour="120">
+                    <block type="repeat_until"></block>
+                    <block type="if_path"></block>
+                    <block type="if_else_path"></block>
+                </category>
+            </xml>
+        </div>
+    </main>
+
+    <!--load global parameters-->
+    <script>
+        // get parameters in url
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+
+        // global vars
+        let {
+            start,
+            categories,
+            id
+        } = getUrlVars()
+
+        // update parameters
+        start = start != undefined
+        categories = categories != undefined
+        id = (id == '1') ? 0 : 1
+
+        // update the checkers
+        if (start) document.getElementById('start_check').checked = true
+        if (categories) document.getElementById('categories_check').checked = true
+
+        // set the toolbox
+        const toolbox = document.getElementById(categories ? 'toolbox_c' : 'toolbox')
+    </script>
+
+    <!--scripts-->
+    <script src="js/levels.js"></script>
+    <script src="js/gui.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/index.js"></script>
+
+    <!--link event to buttons-->
+    <script>
+        // link the buttons
+        document.getElementById('load').onclick = () => game.loadCode() + console.clear()
+        document.getElementById('level_1').onclick = () => game.loadLevel(levels[id = 0]) + console.clear()
+        document.getElementById('level_2').onclick = () => game.loadLevel(levels[id = 1]) + console.clear()
+        document.getElementById('level_3').onclick = () => game.loadLevel(levels[id = 2]) + console.clear()
+        document.getElementById('level_4').onclick = () => game.loadLevel(levels[id = 3]) + console.clear()
+        document.getElementById('level_5').onclick = () => game.loadLevel(levels[id = 4]) + console.clear()
+        document.getElementById('level_6').onclick = () => game.loadLevel(levels[id = 5]) + console.clear()
+        document.getElementById('level_7').onclick = () => game.loadLevel(levels[id = 6]) + console.clear()
+        document.getElementById('level_8').onclick = () => game.loadLevel(levels[id = 7]) + console.clear()
+        document.getElementById('level_9').onclick = () => game.loadLevel(levels[id = 8]) + console.clear()
+        document.getElementById('level_10').onclick = () => game.loadLevel(levels[id = 9]) + console.clear()
+
+
+
+        document.getElementById('forward').onclick = () => gamepad.forward() + gui.removeAnimation()
+        document.getElementById('backward').onclick = () => gamepad.backward() + gui.removeAnimation()
+        document.getElementById('play').onclick = () => gamepad.play()
+        document.getElementById('pause').onclick = () => gamepad.pause()
+    </script>
+
+    <!--remaining block-->
+    <script>
+        // update remaining block
+        Blockly.getMainWorkspace().addChangeListener(() => {
+            let capacity = Blockly.getMainWorkspace().remainingCapacity()
+            if (capacity != Infinity) {
+                // show capacity div
+                document.getElementById('capacity').style.display = 'block'
+                document.getElementById('capacityNumber').innerHTML = capacity
+            } else {
+                // hide capacity div
+                document.getElementById('capacity').style.display = 'none'
+            }
+        })
+    </script>
+
+    <!--navigation-->
+    <script>
+        // get the url
+        const getUrl = (start, categories) => {
+            let url = []
+
+            if (start) url.push('start=true')
+            if (categories) url.push('categories=true')
+            url.push('id=' + (id + 1))
+
+            return 'index.html?' + url.join('&')
+        }
+
+        // add handlers
+        document.getElementById('start_check').onclick =
+            (event) => window.location.href = getUrl(event.target.checked, categories)
+
+        document.getElementById('categories_check').onclick =
+            (event) => window.location.href = getUrl(start, event.target.checked)
+
+        // show capacity div
+        if (id == 2) document.getElementById('capacity').style.display = 'block'
+    </script>
+
+    <!--github link-->
+    <script src="../libs/github/logo.js"></script>
+    <script>
+        GitHub.inject(document.body)
+    </script>
+</body>
+
+</html>
